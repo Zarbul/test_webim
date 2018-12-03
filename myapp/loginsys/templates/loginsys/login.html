@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block login %}
+    {{ friend }}
+    <div class="large-offset-5 large-3 columns">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="card mb-2">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    {{ form.errors }}
+                    <div class="row ">
+                        <p class="col-sm-5">{{ form.username.label_tag }}</p>
+                        <p>{{ form.username }}</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-5">{{ form.password.label_tag }}</p>
+                        <p>{{ form.password }}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small>
+                        <a href="#">Регистрация</a> | <a href="#">Forgot password?</a>
+                    </small>
+                    <div class="columns">
+                        <input class="btn btn-outline-success col-sm-3" type="submit" value="Войти">
+                    </div>
+                    <small>
+                        <p class="text-muted">Или войдите с помощью социальных сетей: </p>
+                        <a href="{% url 'social:begin' 'vk-oauth2' %}"><img
+                                src="https://vk.com/images/icons/favicons/fav_logo.ico" class="avatar-3"
+                                data-toggle="tooltip"
+                                title="Login via VKontakte"></a>
+                    </small>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
